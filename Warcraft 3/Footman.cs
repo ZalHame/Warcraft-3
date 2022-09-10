@@ -14,9 +14,21 @@ namespace Warcraft_3
 
         }
 
-        static public void Rage(int Damage)
+        static public void Rage(Unit unit)
         {
-            Damage += 5;
+            bool RageCondition = false;
+
+            if ((unit.Health <= unit.MaxHealth / 4) & (RageCondition == false))
+            {
+                RageCondition = true;
+                unit.Damage += 5;
+                Console.WriteLine("This footman fell into a RAGE");
+            }
+            else
+            {
+                RageCondition = false;
+                unit.Damage -= 5;
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Warcraft_3
             mage.Attack(footman);
             mage.Attack(footman);
             footman.Attack(mage);
+            Footman.Rage(footman);
             Console.WriteLine(footman.Health);
             //footman.Attack(mage);
             mage.TargetHeal(footman);

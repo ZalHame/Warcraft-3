@@ -18,22 +18,39 @@ namespace Warcraft_3
         {
             int MaxHeal = 25;
             int Heal = unit.MaxHealth - unit.Health;
-            if ((Heal <= MaxHealth) & (Mana - Heal * 2 >= 0))
-            {
-                unit.Health += Heal;
-                Mana -= Heal * 2;
-            }
-            else if ((Mana - Heal * 2 < 0) & (Heal <= MaxHealth))
-            {
-                int ManaHeal = Mana / 2;
-                unit.Health += ManaHeal;
-            }
-            else if ((Heal > MaxHealth) & (Mana - Heal * 2 >= 0))
-            {
 
-            }
+            if (unit.Health > 0)
+            {
+                if ((Heal <= MaxHeal) & (Mana - Heal >= 0))
+                {
+                    unit.Health += Heal;
+                    Mana -= Heal;
+                }
+                else if ((Mana - Heal < 0) & (Heal <= MaxHeal))
+                {
+                    Heal = Mana;
+                    unit.Health += Heal;
+                    Mana -= Heal;
+                }
+                else if ((Heal > MaxHeal) & (Mana - Heal >= 0))
+                {
+                    Heal = MaxHeal;
+                    unit.Health += Heal;
+                    Mana -= Heal;
+                }
+                else if ((Mana - Heal < 0) & (Heal > MaxHeal))
+                {
+                    Heal = Mana;
+                    unit.Health += Heal;
+                    Mana -= Heal;
+                }
 
-            Console.WriteLine(unit + " get " + Heal + " heal");
+                Console.WriteLine(unit + " get " + Heal + " heal");
+            }
+            else
+            {
+                Console.WriteLine("This unit dead");
+            }
         }
     }
 }
