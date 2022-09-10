@@ -14,7 +14,7 @@ namespace Warcraft_3
         public int MaxDamage;
         int MoveSpeed;
         int Cost;
-        public Unit(int Health, int MaxHealth, int Damage, int maxDamage, int MoveSpeed, int Cost)
+        public Unit(int Health, int MaxHealth, int Damage, int MaxDamage, int MoveSpeed, int Cost)
         {
             this.Health = Health;
             this.MaxHealth = MaxHealth;
@@ -24,17 +24,27 @@ namespace Warcraft_3
             this.Cost = Cost;
         }
 
-        public void Move()
-        {
-
-        }
-
         public void Attack(Unit unit)
         {
             if (this.Health > 0)
             {
                 unit.Health -= this.Damage;
                 Console.WriteLine(unit + " take " + this.Damage + " damage");
+            }
+
+            else
+            {
+                Console.WriteLine("This unit dead");
+                this.Health = 0;
+            }
+        }
+
+        public void Attack_Build(Build build)
+        {
+            if (this.Health > 0)
+            {
+                build.Health -= this.Damage;
+                Console.WriteLine(build + " take " + this.Damage + " damage");
             }
 
             else
