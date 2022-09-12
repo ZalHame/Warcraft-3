@@ -8,7 +8,7 @@ namespace Warcraft_3
 {
     class Forge : Build
     {
-        public Forge() : base(500, 500, 0, 0, 400)
+        public Forge() : base(500, 500, 0, 0, 4, 4, 400)
         {
             
         }

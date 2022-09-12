@@ -9,7 +9,7 @@ namespace Warcraft_3
     class Mage : Unit
     {
         public int Mana = 100;
-        public Mage() : base(50, 50, 20, 20, 200, 250)
+        public Mage() : base(50, 50, 20, 20, 1, 1, 200, 250)
         {
 
         }

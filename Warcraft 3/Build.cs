@@ -12,14 +12,18 @@ namespace Warcraft_3
         public int MaxHealth;
         public int Damage;
         public int MaxDamage;
+        public int Defence;
+        public int MaxDefence;
         int Cost;
 
-        public Build(int Health, int MaxHealth, int Damage, int MaxDamage, int Cost)
+        public Build(int Health, int MaxHealth, int Damage, int MaxDamage, int Defence, int MaxDefence, int Cost)
         {
             this.Health = Health;
             this.MaxHealth = MaxHealth;
             this.Damage = Damage;
             this.MaxDamage = MaxDamage;
+            this.Defence = Defence;
+            this.MaxDefence = MaxDefence;
             this.Cost = Cost;
         }
 

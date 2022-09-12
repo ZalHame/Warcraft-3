@@ -8,7 +8,7 @@ namespace Warcraft_3
 {
     class Peasant : Unit
     {
-        public Peasant() : base(20, 20, 5, 5, 100, 50)
+        public Peasant() : base(20, 20, 5, 5, 0, 0, 100, 50)
         {
 
         }

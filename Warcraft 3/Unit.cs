@@ -12,14 +12,18 @@ namespace Warcraft_3
         public int MaxHealth;
         public int Damage;
         public int MaxDamage;
+        public int Defence;
+        public int MaxDefence;
         int MoveSpeed;
         int Cost;
-        public Unit(int Health, int MaxHealth, int Damage, int MaxDamage, int MoveSpeed, int Cost)
+        public Unit(int Health, int MaxHealth, int Damage, int MaxDamage, int Defence, int MaxDefence, int MoveSpeed, int Cost)
         {
             this.Health = Health;
             this.MaxHealth = MaxHealth;
             this.Damage = Damage;
             this.MaxDamage = MaxDamage;
+            this.Defence = Defence;
+            this.MaxDefence = MaxDefence;
             this.MoveSpeed = MoveSpeed;
             this.Cost = Cost;
         }
@@ -28,15 +32,32 @@ namespace Warcraft_3
         {
             if (this.Health > 0)
             {
-                unit.Health -= this.Damage;
-                Console.WriteLine(unit + " take " + this.Damage + " damage");
+                TakeDamage(unit);
             }
 
             else
             {
-                Console.WriteLine("This unit dead");
                 this.Health = 0;
+                Console.WriteLine("Your unit dead");
             }
+        }
+
+        private void TakeDamage(Unit unit)
+        {
+            if (unit.Health > 0)
+            {
+                unit.Health = unit.Health - (this.Damage - unit.Defence);
+                Console.WriteLine(unit + " take " + (this.Damage - unit.Defence) + " damage");
+            }
+            else
+            {
+                Console.WriteLine("This " + unit + " dead");
+            }
+        }
+
+        public void TakeDamage(Unit unit, int MyAttack)
+        {
+            unit.Health = MyAttack - unit.Defence;
         }
 
         public void Attack_Build(Build build)
@@ -49,8 +70,8 @@ namespace Warcraft_3
 
             else
             {
-                Console.WriteLine("This unit dead");
                 this.Health = 0;
+                Console.WriteLine("This unit dead");
             }
         }
     }

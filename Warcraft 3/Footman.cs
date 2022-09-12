@@ -8,13 +8,12 @@ namespace Warcraft_3
 {
     class Footman : Unit
     {
-        int Armor = 5;
-        public Footman() : base(100, 100, 10, 10, 300, 150)
+        public Footman() : base(100, 100, 10, 10, 3, 3, 300, 150)
         {
 
         }
 
-        static public void Rage(Unit unit)
+        static public void Rage(Footman unit)
         {
             bool RageCondition = false;
 
