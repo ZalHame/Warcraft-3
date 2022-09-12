@@ -13,7 +13,7 @@ namespace Warcraft_3
 
         }
 
-        static public void Rage(Footman unit)
+        public static void Rage(Footman unit)
         {
             bool RageCondition = false;
 

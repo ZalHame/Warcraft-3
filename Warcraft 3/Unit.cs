@@ -34,7 +34,6 @@ namespace Warcraft_3
             {
                 TakeDamage(unit);
             }
-
             else
             {
                 this.Health = 0;
