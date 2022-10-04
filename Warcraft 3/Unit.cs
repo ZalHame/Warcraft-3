@@ -63,8 +63,7 @@ namespace Warcraft_3
         {
             if (this.Health > 0)
             {
-                build.Health -= this.Damage;
-                Console.WriteLine(build + " take " + this.Damage + " damage");
+                TakeDamage_Build(build);
             }
 
             else
