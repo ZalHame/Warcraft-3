@@ -8,7 +8,10 @@ namespace Warcraft_3
 {
     class Peasant : Unit
     {
-        public Peasant() : base(20, 20, 5, 5, 0, 0, 100, 50)
+        public static int maxhealth = 20;
+        public static int maxdamage = 5;
+        public static int maxdefence = 0;
+        public Peasant() : base(maxhealth, maxdamage, maxdefence, "Peasant")
         {
 
         }

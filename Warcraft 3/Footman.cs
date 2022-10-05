@@ -8,25 +8,28 @@ namespace Warcraft_3
 {
     class Footman : Unit
     {
-        public Footman() : base(100, 100, 10, 10, 3, 3, 300, 150)
+        public static int maxhealth = 100;
+        public static int maxdamage = 10;
+        public static int maxdefence = 3;
+        public Footman() : base(maxhealth, maxdamage, maxdefence, "Footman")
         {
 
         }
 
-        public static void Rage(Footman unit)
+        public void Rage()
         {
             bool RageCondition = false;
 
-            if ((unit.Health <= unit.MaxHealth / 4) & (RageCondition == false))
+            if ((this.Health <= this.MaxHealth / 4) & (RageCondition == false))
             {
                 RageCondition = true;
-                unit.Damage += 5;
+                this.Damage += 5;
                 Console.WriteLine("This footman fell into a RAGE");
             }
             else
             {
                 RageCondition = false;
-                unit.Damage -= 5;
+                this.Damage -= 5;
             }
         }
     }

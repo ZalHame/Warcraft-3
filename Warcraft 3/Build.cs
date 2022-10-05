@@ -14,7 +14,7 @@ namespace Warcraft_3
         public int MaxDamage;
         public int Defence;
         public int MaxDefence;
-        int Cost;
+        public int Cost;
 
         public Build(int Health, int MaxHealth, int Damage, int MaxDamage, int Defence, int MaxDefence, int Cost)
         {
@@ -26,6 +26,5 @@ namespace Warcraft_3
             this.MaxDefence = MaxDefence;
             this.Cost = Cost;
         }
-
     }
 }

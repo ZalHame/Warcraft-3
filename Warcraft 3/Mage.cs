@@ -8,8 +8,14 @@ namespace Warcraft_3
 {
     class Mage : Unit
     {
-        public int Mana = 100;
-        public Mage() : base(50, 50, 20, 20, 1, 1, 200, 250)
+
+        public static int maxmana = 100;
+        public int MaxMana = maxmana;
+        public int Mana = maxmana;
+        public static int maxhealth = 50;
+        public static int maxdamage = 20;
+        public static int maxdefence = 1;
+        public Mage() : base(maxhealth, maxdamage, maxdefence, "Mage")
         {
 
         }

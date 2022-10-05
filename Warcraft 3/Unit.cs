@@ -14,9 +14,11 @@ namespace Warcraft_3
         public int MaxDamage;
         public int Defence;
         public int MaxDefence;
-        int MoveSpeed;
-        int Cost;
-        public Unit(int Health, int MaxHealth, int Damage, int MaxDamage, int Defence, int MaxDefence, int MoveSpeed, int Cost)
+        public string Name;
+        public static int Level = 1;
+        public static List<Unit> UnitList = new List<Unit>();
+
+        /*public Unit(int Health, int MaxHealth, int Damage, int MaxDamage, int Defence, int MaxDefence)
         {
             this.Health = Health;
             this.MaxHealth = MaxHealth;
@@ -24,8 +26,18 @@ namespace Warcraft_3
             this.MaxDamage = MaxDamage;
             this.Defence = Defence;
             this.MaxDefence = MaxDefence;
-            this.MoveSpeed = MoveSpeed;
-            this.Cost = Cost;
+            UnitList.Add(this);
+        }*/
+        public Unit(int MaxHealth, int MaxDamage, int MaxDefence, string Name)
+        {
+            this.Health = MaxHealth;
+            this.MaxHealth = MaxHealth;
+            this.Damage = MaxDamage;
+            this.MaxDamage = MaxDamage;
+            this.Defence = MaxDefence;
+            this.MaxDefence = MaxDefence;
+            this.Name = Name;
+            UnitList.Add(this);
         }
 
         public void Attack(Unit unit)
@@ -54,11 +66,6 @@ namespace Warcraft_3
             }
         }
 
-        public void TakeDamage(Unit unit, int MyAttack)
-        {
-            unit.Health = MyAttack - unit.Defence;
-        }
-
         public void Attack_Build(Build build)
         {
             if (this.Health > 0)
@@ -70,6 +77,19 @@ namespace Warcraft_3
             {
                 this.Health = 0;
                 Console.WriteLine("This unit dead");
+            }
+        }
+
+        private void TakeDamage_Build(Build build)
+        {
+            if (build.Health > 0)
+            {
+                build.Health = build.Health - (this.Damage - build.Defence);
+                Console.WriteLine(build + " take " + (this.Damage - build.Defence) + " damage");
+            }
+            else
+            {
+                Console.WriteLine("This " + build + " destroy");
             }
         }
     }
