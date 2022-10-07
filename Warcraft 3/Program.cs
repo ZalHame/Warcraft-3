@@ -9,6 +9,9 @@ namespace Warcraft_3
             Peasant peasant = new Peasant();
             Footman footman = new Footman();
             Mage mage = new Mage();
+            mage.HealthChangedEvent += Info;
+            footman.HealthChangedEvent += Info;
+            peasant.HealthChangedEvent += Info;
             /*Peasant.Mining();
             Peasant.Build();
             Peasant.Cancel();
@@ -28,6 +31,18 @@ namespace Warcraft_3
             mage.TargetHeal(footman);
             Console.WriteLine(footman.Health);
             Console.WriteLine(mage.Mana);
+
+            static void Info(int health, int maxHealth, int currentHealth, string Name)
+            {
+                if (health < currentHealth)
+                {
+                    Console.WriteLine($"{Name} Recieved damage {currentHealth - health} ({maxHealth}/{health})");
+                }
+                else if (health > currentHealth)
+                {
+                    Console.WriteLine($"{Name} Healed health {health - currentHealth} ({maxHealth}/{health})");
+                }
+            }
         }
     }
 }

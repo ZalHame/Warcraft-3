@@ -8,26 +8,30 @@ namespace Warcraft_3
 {
     internal class Unit
     {
-        public int Health;
-        public int MaxHealth;
-        public int Damage;
-        public int MaxDamage;
-        public int Defence;
-        public int MaxDefence;
-        public string Name;
+        public int _health { get; set; }
+        public int Health
+        {
+            get
+            {
+                return _health;
+            }
+            set
+            {
+                int currentHealth = _health;
+                if (value < 0) { _health = 0; }
+                else { _health = value; }
+                HealthChangedEvent?.Invoke(_health, MaxHealth, currentHealth, this.Name);
+            }
+        }
+        public int MaxHealth { get; set; }
+        public int Damage { get; set; }
+        public int MaxDamage { get; set; }
+        public int Defence { get; set; }
+        public int MaxDefence { get; set; }
+        public string Name { get; set; }
         public static int Level = 1;
         public static List<Unit> UnitList = new List<Unit>();
-
-        /*public Unit(int Health, int MaxHealth, int Damage, int MaxDamage, int Defence, int MaxDefence)
-        {
-            this.Health = Health;
-            this.MaxHealth = MaxHealth;
-            this.Damage = Damage;
-            this.MaxDamage = MaxDamage;
-            this.Defence = Defence;
-            this.MaxDefence = MaxDefence;
-            UnitList.Add(this);
-        }*/
+        public delegate void HealthChangedDelegate(int Health, int MaxHealth, int currentHealth, string Name);
         public Unit(int MaxHealth, int MaxDamage, int MaxDefence, string Name)
         {
             this.Health = MaxHealth;
@@ -58,7 +62,6 @@ namespace Warcraft_3
             if (unit.Health > 0)
             {
                 unit.Health = unit.Health - (this.Damage - unit.Defence);
-                Console.WriteLine(unit + " take " + (this.Damage - unit.Defence) + " damage");
             }
             else
             {
@@ -92,5 +95,7 @@ namespace Warcraft_3
                 Console.WriteLine("This " + build + " destroy");
             }
         }
+
+        public event HealthChangedDelegate HealthChangedEvent;
     }
 }
