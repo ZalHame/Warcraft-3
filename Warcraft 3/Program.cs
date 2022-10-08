@@ -12,13 +12,9 @@ namespace Warcraft_3
             mage.HealthChangedEvent += Info;
             footman.HealthChangedEvent += Info;
             peasant.HealthChangedEvent += Info;
-            /*Peasant.Mining();
+            Peasant.Mining();
             Peasant.Build();
             Peasant.Cancel();
-            Console.WriteLine(mage.Health);
-            Console.WriteLine(footman.Health);*/
-            mage.Attack(footman);
-            mage.Attack(footman);
             mage.Attack(footman);
             mage.Attack(footman);
             mage.Attack(footman);
@@ -26,21 +22,21 @@ namespace Warcraft_3
             mage.Attack(footman);
             footman.Attack(mage);
             footman.Rage();
-            Console.WriteLine(footman.Health);
-            //footman.Attack(mage);
+            footman.Attack(mage);
+            mage.Attack(footman);
+            mage.Attack(footman);
+            footman.Attack(mage);
             mage.TargetHeal(footman);
-            Console.WriteLine(footman.Health);
-            Console.WriteLine(mage.Mana);
 
-            static void Info(int health, int maxHealth, int currentHealth, string Name)
+            static void Info(int Health, int MaxHealth, int currentHealth, string Name)
             {
-                if (health < currentHealth)
+                if (Health < currentHealth)
                 {
-                    Console.WriteLine($"{Name} Recieved damage {currentHealth - health} ({maxHealth}/{health})");
+                    Console.WriteLine($"{Name} Recieved damage {currentHealth - Health} ({Health}/{MaxHealth})");
                 }
-                else if (health > currentHealth)
+                else if (Health > currentHealth)
                 {
-                    Console.WriteLine($"{Name} Healed health {health - currentHealth} ({maxHealth}/{health})");
+                    Console.WriteLine($"{Name} Healed health {Health - currentHealth} ({Health}/{MaxHealth})");
                 }
             }
         }

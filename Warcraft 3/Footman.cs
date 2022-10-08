@@ -20,7 +20,7 @@ namespace Warcraft_3
         {
             bool RageCondition = false;
 
-            if ((this.Health <= this.MaxHealth / 4) & (RageCondition == false))
+            if ((this.Health <= this.MaxHealth / 4) && (RageCondition == false) && (this.Health > 0))
             {
                 RageCondition = true;
                 this.Damage += 5;
