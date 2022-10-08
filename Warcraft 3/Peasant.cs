@@ -16,17 +16,17 @@ namespace Warcraft_3
 
         }
 
-        public static void Mining()
+        public void Mining()
         {
             Console.WriteLine("Добывает");
         }
 
-        public static void Build()
+        public void Build()
         {
             Console.WriteLine("Строит");
         }
 
-        public static void Cancel()
+        public void Cancel()
         {
             Console.WriteLine("Отменяет");
         }

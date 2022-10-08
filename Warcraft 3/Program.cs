@@ -12,16 +12,17 @@ namespace Warcraft_3
             mage.HealthChangedEvent += Info;
             footman.HealthChangedEvent += Info;
             peasant.HealthChangedEvent += Info;
-            Peasant.Mining();
-            Peasant.Build();
-            Peasant.Cancel();
+            footman.RageActivationEvent += Rage;
+            mage.RageActivationEvent += Rage;
+            peasant.Mining();
+            peasant.Build();
+            peasant.Cancel();
             mage.Attack(footman);
             mage.Attack(footman);
             mage.Attack(footman);
             mage.Attack(footman);
             mage.Attack(footman);
             footman.Attack(mage);
-            footman.Rage();
             footman.Attack(mage);
             mage.Attack(footman);
             mage.Attack(footman);
@@ -37,6 +38,15 @@ namespace Warcraft_3
                 else if (Health > currentHealth)
                 {
                     Console.WriteLine($"{Name} Healed health {Health - currentHealth} ({Health}/{MaxHealth})");
+                }
+            }
+            static void Rage(Footman footman, string Name)
+            {
+                if(!footman.IsInRage)
+                {
+                    Console.WriteLine($"{Name} in rage");
+                    footman.Damage += 5;
+                    footman.IsInRage = true;
                 }
             }
         }

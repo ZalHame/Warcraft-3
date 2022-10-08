@@ -11,12 +11,13 @@ namespace Warcraft_3
         public static int maxhealth = 100;
         public static int maxdamage = 10;
         public static int maxdefence = 3;
+        public bool IsInRage = false;
         public Footman() : base(maxhealth, maxdamage, maxdefence, "Footman")
         {
 
         }
 
-        public void Rage()
+        /*public void Rage()
         {
             bool RageCondition = false;
 
@@ -31,6 +32,6 @@ namespace Warcraft_3
                 RageCondition = false;
                 this.Damage -= 5;
             }
-        }
+        }*/
     }
 }

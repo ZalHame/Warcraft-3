@@ -21,6 +21,11 @@ namespace Warcraft_3
                 if (value < 0) { _health = 0; }
                 else { _health = value; }
                 HealthChangedEvent?.Invoke(_health, MaxHealth, currentHealth, this.Name);
+
+                if(this._health < this.MaxHealth * 0.4 && this.GetType().Name == "Footman")
+                {
+                    RageActivationEvent?.Invoke((this as Footman), this.Name);
+                }
             }
         }
         public int MaxHealth { get; set; }
@@ -32,6 +37,7 @@ namespace Warcraft_3
         public static int Level = 1;
         public static List<Unit> UnitList = new List<Unit>();
         public delegate void HealthChangedDelegate(int Health, int MaxHealth, int currentHealth, string Name);
+        public delegate void RageActivationDelegate(Footman unit, string Name);
         public Unit(int MaxHealth, int MaxDamage, int MaxDefence, string Name)
         {
             this.Health = MaxHealth;
@@ -97,5 +103,6 @@ namespace Warcraft_3
         }
 
         public event HealthChangedDelegate HealthChangedEvent;
+        public event RageActivationDelegate RageActivationEvent;
     }
 }
