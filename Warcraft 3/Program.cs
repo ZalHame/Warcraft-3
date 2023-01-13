@@ -14,7 +14,7 @@ namespace Warcraft_3
             peasant.HealthChangedEvent += Info;
             footman.RageActivationEvent += Rage;
             mage.RageActivationEvent += Rage;
-            peasant.Mining();
+            /*peasant.Mining();
             peasant.Build();
             peasant.Cancel();
             mage.Attack(footman);
@@ -27,7 +27,7 @@ namespace Warcraft_3
             mage.Attack(footman);
             mage.Attack(footman);
             footman.Attack(mage);
-            mage.TargetHeal(footman);
+            mage.TargetHeal(footman);*/
 
             static void Info(int Health, int MaxHealth, int currentHealth, string Name)
             {
@@ -49,6 +49,14 @@ namespace Warcraft_3
                     footman.IsInRage = true;
                 }
             }
+
+            Task task1 = new Task(() => footman.Attack(mage));
+            Task task2 = new Task(() => mage.Attack(footman));
+
+            task1.Start();
+            task1.Wait();
+            task2.Start();
+            task2.Wait();
         }
     }
 }

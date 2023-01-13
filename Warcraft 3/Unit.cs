@@ -68,6 +68,7 @@ namespace Warcraft_3
             if (unit.Health > 0)
             {
                 unit.Health = unit.Health - (this.Damage - unit.Defence);
+                Console.WriteLine("У " + unit + " осталось " + unit.Health + " хп");
             }
             else
             {
